@@ -1,0 +1,20 @@
+package PropertyManager.manager;
+
+import java.time.LocalDate;
+import java.util.List;
+
+/**
+ * Created by Jan
+ */
+public interface TitleDeedManager {
+    void createTitleDeed(TitleDeed titleDeed);//ja
+    void updateTitleDeed(TitleDeed titleDeed);//ja
+    void deleteTitleDeed(TitleDeed titleDeed);
+    TitleDeed getTitleDeedById(Long id);
+    List<TitleDeed> findAllTitleDeed();
+    List<TitleDeed> findAllTitleDeedForOwner(Long owner);
+    List<TitleDeed> findAllTitleDeedForProperty(Long property);
+    List<Property> findPropertiesForOwner(Long owner);//ja
+    List<Owner> findOwnersForProperty(Long property);//ja
+    List<TitleDeed> findTitleDeedsFromTo(LocalDate from, LocalDate to);
+}
