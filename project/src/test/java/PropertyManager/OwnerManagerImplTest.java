@@ -1,6 +1,7 @@
 package PropertyManager;
 
 import PropertyManager.common.DBUtils;
+import PropertyManager.common.BatisConnectionFactory;
 import PropertyManager.manager.Owner;
 import PropertyManager.manager.OwnerManagerImpl;
 import PropertyManager.manager.TitleDeedManager;
