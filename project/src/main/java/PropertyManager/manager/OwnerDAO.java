@@ -20,15 +20,15 @@ import lombok.Data;
  */
 public final class OwnerDAO {
 
-    public static void create(Owner owner) {
-        SqlSession session = BatisConnectionFactory.getSession().openSession();
-        session.insert("ownerMapper.insert", owner);
-        session.commit();
-        session.close();
+    public static void create(Owner owner) throws SQLException {
+        try (SqlSession session = BatisConnectionFactory.getSession().openSession()) {
+            session.insert("ownerMapper.insert", owner);
+            session.commit();
+        }
     }
 
     public static Owner getById(Long id) throws SQLException {
-        Owner own = new Owner();
+        Owner own = Owner.builder().build();
         SqlSession session = BatisConnectionFactory.getSession().openSession();
         own = session.selectOne("ownerMapper.getById", id);
         session.close();

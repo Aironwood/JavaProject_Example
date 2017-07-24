@@ -38,7 +38,7 @@ public class TitleDeedManagerImplTest {
     public void setUp() throws SQLException {
         ds = prepareDataSource();
         DBUtils.executeSqlScript(ds, TitleDeedManager.class.getResourceAsStream("/createTables.sql"));
-        ownerManager = new OwnerManagerImpl(ds);
+        ownerManager = new OwnerManagerImpl();
         propertyManager = new PropertyManagerImpl(ds);
         manager = new TitleDeedManagerImpl(ds);
     }
@@ -329,7 +329,8 @@ public class TitleDeedManagerImplTest {
     }
 
     private Owner createOwner(String name, String surname, LocalDate bornDate, String phone, String street, String town) {
-        return new Owner(name, surname, bornDate, phone, street, town);
+        return Owner.builder().name(name).surname(surname).born(bornDate)
+                .phoneNumber(phone).addressStreet(street).addressTown(town).build();
     }
 
     private Property createProperty(String addressStreet, String addressTown, BigDecimal price, String type, int squareMeters,

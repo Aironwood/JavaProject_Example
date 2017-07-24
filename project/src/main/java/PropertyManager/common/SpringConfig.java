@@ -52,7 +52,7 @@ public class SpringConfig {
 
     @Bean
     public OwnerManager ownerManager() {
-        return new OwnerManagerImpl(dataSource());
+        return new OwnerManagerImpl();
     }
 
     @Bean

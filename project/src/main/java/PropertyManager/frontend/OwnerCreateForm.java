@@ -186,7 +186,7 @@ public class OwnerCreateForm extends javax.swing.JFrame {
             return null;
         }
         if (owner == null) {
-            owner = new Owner();
+            owner = Owner.builder().build();
         }
         owner.setName(name);
         owner.setSurname(surname);

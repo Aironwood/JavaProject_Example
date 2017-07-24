@@ -40,7 +40,7 @@ public class OwnerManagerImplTest {
     public void setUp() throws Exception {
         ds = prepareDataSource();
         DBUtils.executeSqlScript(ds, TitleDeedManager.class.getResourceAsStream("/createTables.sql"));
-        manager = new OwnerManagerImpl(ds);
+        manager = new OwnerManagerImpl();
     }
 
     @After
@@ -330,7 +330,8 @@ public class OwnerManagerImplTest {
 
     private Owner createOwner(String name, String surname, int day, int month, int year, String phone, String street, String town) {
         LocalDate localDate = LocalDate.of(year,month,day);
-        return new Owner(name, surname, localDate, phone, street, town);
+        return Owner.builder().name(name).surname(surname).born(localDate)
+                .phoneNumber(phone).addressStreet(street).addressTown(town).build();
     }
     private static Comparator<Owner> ownerComparator = new Comparator<Owner>() {
 

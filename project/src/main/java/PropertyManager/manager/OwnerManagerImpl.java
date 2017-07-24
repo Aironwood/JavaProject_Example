@@ -14,12 +14,7 @@ import java.util.List;
  */
 public class OwnerManagerImpl implements OwnerManager {
 
-    //private final DataSource dataSource;
     private final static Logger log = LoggerFactory.getLogger(OwnerManagerImpl.class);
-
-    public OwnerManagerImpl(DataSource ds) {
-        //dataSource = ds;
-    }
 
     public void createOwner(Owner owner) {
         if (owner == null) {
@@ -28,8 +23,12 @@ public class OwnerManagerImpl implements OwnerManager {
         if (owner.getId() != null) {
             throw new IllegalArgumentException("Id is not null");
         }
-        OwnerDAO.create(owner);
-
+        try {
+            OwnerDAO.create(owner);
+        } catch (SQLException e) {
+            log.error("DB connection error ", e);
+            throw new ServiceFailureException("Error when creating owner", e);
+        }
     }
 
     @Override
@@ -87,7 +86,6 @@ public class OwnerManagerImpl implements OwnerManager {
             }
             OwnerDAO.delete(owner.getId());
         } catch (SQLIntegrityConstraintViolationException ex) {
-            log.error("Cannot delete owner while he has title deed ");
             throw new ServiceFailureException("Cannot delete owner with titleDeed", ex);
         } catch (SQLException e) {
             log.error("DB connection error ", e);
@@ -98,7 +96,7 @@ public class OwnerManagerImpl implements OwnerManager {
 
     @Override
     public Owner getOwnerById(Long id) {
-        Owner own = new Owner();
+        Owner own = Owner.builder().build();
         if (id == null) {
             throw new IllegalArgumentException("Id is null");
         }
