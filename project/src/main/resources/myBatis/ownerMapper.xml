@@ -2,9 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
+
 <mapper namespace="ownerMapper">
 <resultMap id = "ownerResult" type = "Owner">
-   <id property = "id" column = "ID"/>
+   <id property="id" column="ID"/>
    <result property = "name" column = "NAME"/>
    <result property = "surname" column = "SURNAME"/>
    <result property = "born" column = "BORN"/>
@@ -39,7 +40,7 @@
 </select>
 
 <select id = "getBySurname" parameterType = "String" resultMap = "ownerResult">
-   SELECT * FROM owner WHERE SURNAME LIKE ('%' || #{surname} || '%')
+   SELECT * FROM owner WHERE SURNAME LIKE )('%' || #{surname} || '%')
 </select>
 
 </mapper>

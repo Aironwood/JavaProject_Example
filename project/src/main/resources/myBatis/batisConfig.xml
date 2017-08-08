@@ -5,6 +5,8 @@
 <configuration>	
     <typeAliases>
         <typeAlias alias = "Owner" type = "PropertyManager.manager.Owner"/>
+        <typeAlias alias = "Property" type = "PropertyManager.manager.Property"/>
+        <typeAlias alias = "TitleDeed" type = "PropertyManager.manager.TitleDeed"/>
     </typeAliases>	
     <typeHandlers>
         <typeHandler handler="org.apache.ibatis.type.LocalDateTypeHandler" />
@@ -29,5 +31,6 @@
     </environments>	
     <mappers>
       <mapper resource = "myBatis/ownerMapper.xml"/>
+      <mapper resource = "myBatis/propertyMapper.xml"/>
     </mappers>   
 </configuration>

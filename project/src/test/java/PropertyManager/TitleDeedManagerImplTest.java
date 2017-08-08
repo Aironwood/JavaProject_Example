@@ -336,7 +336,9 @@ public class TitleDeedManagerImplTest {
     private Property createProperty(String addressStreet, String addressTown, BigDecimal price, String type, int squareMeters,
                                     LocalDate dateOfBuild, String description) {
 
-        return new Property(addressStreet,addressTown,price,type,squareMeters,dateOfBuild,description);
+        return Property.builder().addressStreet(addressStreet).addressTown(addressTown)
+                .price(price).typeOfBuilding(type).squareMeters(squareMeters).dateOfBuild(dateOfBuild)
+                .description(description).build();
     }
 
     private static Comparator<Owner> ownerComparator = new Comparator<Owner>() {

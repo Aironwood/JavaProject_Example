@@ -91,10 +91,10 @@ public class PropertyManagerImplTest {
         property = manager.getPropertyById(id);
         assertEquals(property.getPrice(), new BigDecimal(100));
 
-        property.setType("Bytovka");
+        property.setTypeOfBuilding("Bytovka");
         manager.updateProperty(property);
         property = manager.getPropertyById(id);
-        assertEquals(property.getType(), "Bytovka");
+        assertEquals(property.getTypeOfBuilding(), "Bytovka");
 
         property.setSquareMeters(200);
         manager.updateProperty(property);
@@ -117,7 +117,7 @@ public class PropertyManagerImplTest {
         assertNotNull(property);
         assertNotNull(test);
 
-        manager.deleteProperty(test.getId());
+        manager.deleteProperty(test);
 
         assertNull(manager.getPropertyById(test.getId()));
         assertNotNull(property);
@@ -150,8 +150,10 @@ public class PropertyManagerImplTest {
 
     private Property createProperty(String addressStreet, String addressTown, BigDecimal price, String type, int squareMeters, LocalDate dateOfBuild, String description) {
         //Calendar dateS = new GregorianCalendar(day, month, year);
-
-        return new Property(addressStreet, addressTown, price, type, squareMeters, dateOfBuild , description);
+        
+        return Property.builder().addressStreet(addressStreet).addressTown(addressTown)
+                .price(price).typeOfBuilding(type).squareMeters(squareMeters).dateOfBuild(dateOfBuild)
+                .description(description).build();
     }
 
 }

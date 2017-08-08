@@ -8,7 +8,7 @@ import java.util.List;
 public interface PropertyManager {
     void createProperty(Property property);
     void updateProperty(Property property);
-    void deleteProperty(Long propertyId);
+    void deleteProperty(Property property);
     Property getPropertyById(Long id);
     List<Property> findAllProperties();
     List<Property> findAllPropertiesByTown(String town);

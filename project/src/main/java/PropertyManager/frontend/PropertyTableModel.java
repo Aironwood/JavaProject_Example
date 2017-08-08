@@ -69,7 +69,7 @@ public class PropertyTableModel extends AbstractTableModel{
             case 2:
                 return property.getPrice();
             case 3:
-                return property.getType();
+                return property.getTypeOfBuilding();
             case 4:
                 return property.getSquareMeters();
             case 5:
@@ -117,7 +117,7 @@ public class PropertyTableModel extends AbstractTableModel{
                 property.setPrice((BigDecimal) aValue);
                 break;
             case 3:
-                property.setType((String) aValue);
+                property.setTypeOfBuilding((String) aValue);
                 break;
             case 4:
                 property.setSquareMeters((Integer) aValue);

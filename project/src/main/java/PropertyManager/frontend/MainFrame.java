@@ -326,7 +326,7 @@ public class MainFrame extends javax.swing.JFrame {
                 for (int selectedRow : selectedRows) {
                     Property property = propertyModel.getProperty(selectedRow);
                     try {
-                        propertyManager.deleteProperty(property.getId());
+                        propertyManager.deleteProperty(property);
                         toDeleteRows.add(selectedRow);
                     }catch (Exception ex) {
                         //log.error("Cannot delete property." + ex);

@@ -62,7 +62,7 @@ public class PropertyCreateForm extends javax.swing.JFrame {
             jTextField1.setText(property.getAddressStreet());
             jTextField2.setText(property.getAddressTown());
             jTextField3.setText(property.getPrice().toString());    // HINT
-            jTextField4.setText(property.getType());
+            jTextField4.setText(property.getTypeOfBuilding());
             jTextField5.setText(String.valueOf(property.getSquareMeters()));  // HINT
             LocalDate localDate = property.getDateOfBuild();
             Instant instant = localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
@@ -221,7 +221,7 @@ public class PropertyCreateForm extends javax.swing.JFrame {
         property.setAddressStreet(street);
         property.setAddressTown(town);
         property.setPrice(price);
-        property.setType(type);
+        property.setTypeOfBuilding(type);
         property.setSquareMeters(meters);
         property.setDateOfBuild(localDate);
         property.setDescription(description);
